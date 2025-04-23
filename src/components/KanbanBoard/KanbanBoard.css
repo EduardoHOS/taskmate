@@ -1,0 +1,445 @@
+/* ===============================
+   1. CONTAINER & LAYOUT
+   =============================== */
+   .kanban-container {
+    padding: 1.5rem;
+    margin-top: 3vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* ===============================
+     2. BOARD HEADER & TITLE
+     =============================== */
+  .board-header {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .board-title {
+    color: #141414;
+    font-size: 1.6rem;
+    font-weight: 800;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+    letter-spacing: -0.01em;
+    text-align: center;
+    position: relative;
+    border-bottom: 2px solid #f7f7f7;
+  }
+  
+  .board-title:after {
+    content: "📋";
+    font-size: 1.4rem;
+    position: absolute;
+    margin-left: 8px;
+  }
+  
+  /* ===============================
+     3. SPRINT CONTROLS
+     =============================== */
+  .sprint-controls {
+    display: grid;
+    grid-template-columns: minmax(200px, 2fr) 3fr;
+    gap: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  
+  .sprint-controls:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Sprint selector area */
+  .sprint-selector-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  /* Sprint stats display */
+  .sprint-stats {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  
+  .task-count {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    color: #777;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  
+  .task-count:before {
+    content: "🎯";
+    margin-right: 5px;
+  }
+  
+  .sprint-name-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #4b4b4b;
+    padding: 0.5rem 1rem;
+    background-color: #fff;
+    border-radius: 20px;
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    animation: slideIn 0.3s ease;
+    border: 2px solid #f0f0f0;
+  }
+  
+  .active-indicator {
+    background-color: #58cc02; /* Duolingo green */
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Sprint progress tracking */
+  .sprint-progress {
+    margin-top: 0.5rem;
+    height: 8px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .sprint-progress-bar {
+    height: 100%;
+    background-color: #58cc02; /* Duolingo green */
+    border-radius: 10px;
+    transition: width 0.3s ease;
+  }
+  
+  .streak-display {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #fff5e6;
+    border: 2px solid #ffb020;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    font-weight: 600;
+    color: #ff9600;
+    margin-left: auto;
+  }
+  
+  .streak-display:before {
+    content: "🔥";
+    font-size: 1.2rem;
+  }
+  
+  /* Sprint action buttons */
+  .sprint-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+  }
+  
+  .sprint-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: white;
+    border: 2px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #4b4b4b;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: auto;
+  }
+  
+  .btn-icon {
+    font-size: 1.2rem;
+  }
+  
+  .btn-icon:before {
+    content: "";
+  }
+  
+  .sprint-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  }
+  
+  .sprint-action-btn:active {
+    transform: translateY(0);
+  }
+  
+  /* Button variants */
+  .set-active-btn {
+    border-color: #1cb0f6; /* Duolingo blue */
+    color: #1cb0f6;
+  }
+  
+  .set-active-btn:hover {
+    background-color: #e6f7ff;
+  }
+  
+  .complete-btn {
+    border-color: #58cc02; /* Duolingo green */
+    color: #58cc02;
+  }
+  
+  .complete-btn:hover {
+    background-color: #f2ffea;
+  }
+  
+  .new-sprint-btn {
+    border-color: #ff9600; /* Duolingo orange */
+    color: #ff9600;
+    background-color: #fff;
+  }
+  
+  .new-sprint-btn:hover {
+    background-color: #fff5e6;
+  }
+  
+  /* ===============================
+     4. NEW SPRINT FORM
+     =============================== */
+  .new-sprint-form {
+    margin-top: 1rem;
+    padding: 1.5rem;
+    border: none;
+    border-radius: 16px;
+    background-color: #fff;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.3s ease;
+    position: relative;
+    border: 2px solid #58cc02; /* Duolingo green */
+  }
+  
+  .new-sprint-form:before {
+    content: "🚀 New Sprint";
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: #58cc02;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+  
+  .sprint-name-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e5e5e5;
+    border-radius: 12px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.2s;
+  }
+  
+  .sprint-name-input:focus {
+    border-color: #58cc02; /* Duolingo green */
+    box-shadow: 0 0 0 3px rgba(88, 204, 2, 0.2);
+    outline: none;
+  }
+  
+  .form-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .create-sprint-btn, 
+  .cancel-btn {
+    padding: 0.7rem 1.5rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex: 1;
+    text-align: center;
+  }
+  
+  .create-sprint-btn {
+    background-color: #58cc02; /* Duolingo green */
+    color: white;
+    border: none;
+    box-shadow: 0 4px 0 #46a302; /* Pressed effect */
+  }
+  
+  .create-sprint-btn:hover:not(:disabled) {
+    background-color: #61df00;
+    transform: translateY(-2px);
+  }
+  
+  .create-sprint-btn:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #46a302;
+  }
+  
+  .create-sprint-btn:disabled {
+    background-color: #c1c7d0;
+    box-shadow: 0 4px 0 #a5aab0;
+    cursor: not-allowed;
+  }
+  
+  .cancel-btn {
+    background-color: #fff;
+    border: 2px solid #e5e5e5;
+    color: #777;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #f7f7f7;
+  }
+  
+  .cancel-btn:active {
+    transform: translateY(2px);
+  }
+  
+  /* ===============================
+     5. BOARD CONTAINER
+     =============================== */
+     .board-container {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      flex: 1;
+      padding: 0.5rem 1.5rem; /* Increased horizontal padding */
+      margin: 1rem auto 0; /* Center with auto horizontal margins */
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
+      justify-content: center; /* Center columns when there's extra space */
+      max-width: calc(100% - 2rem); /* Prevent edge bleeding */
+      align-items: flex-start; /* Align columns at the top */
+      min-height: 70vh; /* Maintain minimum height */
+    }
+  
+  /* Horizontal scrollbar styling */
+  .board-container::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .board-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  
+  .board-container::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 10px;
+  }
+  
+  .board-container::-webkit-scrollbar-thumb:hover {
+    background: #ccc;
+  }
+  
+  /* ===============================
+     6. ANIMATIONS
+     =============================== */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  .sprint-action-btn:hover .btn-icon {
+    animation: bounce 1s ease;
+  }
+  
+  /* ===============================
+     7. RESPONSIVE STYLES
+     =============================== */
+
+     @media (min-width: 1200px) {
+      .board-container {
+        justify-content: space-evenly; /* Better distribution on large screens */
+        padding: 0.5rem 2rem; /* More padding on larger screens */
+      }
+    }
+    
+    /* Ensure kanban container takes full height */
+    .kanban-container {
+      padding: 1.5rem;
+      min-height: 80vh; /* Ensure consistent height */
+      display: flex;
+      flex-direction: column;
+      background-color: #fff;
+      border-radius: 16px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+  @media (max-width: 768px) {
+    .kanban-container {
+      padding: 1rem;
+    }
+    
+    .board-title {
+      font-size: 1.4rem;
+    }
+    
+    .sprint-controls {
+      grid-template-columns: 1fr;
+    }
+    
+    .sprint-actions {
+      justify-content: flex-start;
+      margin-top: 0.5rem;
+    }
+    
+    .board-container {
+      margin-right: -1rem;
+      margin-left: -1rem;
+      padding: 0 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .form-buttons {
+      flex-direction: column;
+    }
+    
+    .board-title:after {
+      display: none;
+    }
+  }

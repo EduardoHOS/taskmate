@@ -1,0 +1,39 @@
+/* Blocked Move Notification */
+.blocked-move-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background-color: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+    max-width: 360px;
+    transform: translateX(0);
+    animation: slideIn 0.3s ease-out, fadeOut 0.3s 2.7s forwards;
+    border-left: 4px solid #f0ad4e;
+  }
+  
+  .notification-icon {
+    font-size: 24px;
+    color: #f0ad4e;
+  }
+  
+  .notification-content {
+    flex: 1;
+  }
+  
+  .notification-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #333;
+  }
+  
+  .notification-message {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+  }

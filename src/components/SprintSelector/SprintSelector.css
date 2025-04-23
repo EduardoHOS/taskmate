@@ -1,0 +1,240 @@
+.form-group {
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #4b4b4b;
+    font-size: 0.9rem;
+  }
+  
+  .form-select {
+    appearance: none;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    padding-right: 2.5rem;
+    border: 2px solid #e5e5e5;
+    border-radius: 12px;
+    background-color: white;
+    font-size: 1rem;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+  }
+  
+  .form-select:hover {
+    border-color: #1cb0f6;
+  }
+  
+  .form-select:focus {
+    outline: none;
+    border-color: #1cb0f6;
+    box-shadow: 0 0 0 3px rgba(28, 176, 246, 0.2);
+  }
+  
+  /* Custom dropdown arrow */
+  .form-group:after {
+    position: absolute;
+    right: 15px;
+    top: 42px;
+    font-size: 1.2rem;
+    color: #777;
+    pointer-events: none;
+  }
+  
+  /* Sprint options styling */
+  .form-select option {
+    padding: 10px;
+  }
+  
+  /* Active sprint styling */
+  .form-select option:checked {
+    background-color: #e8f7e0;
+    color: #58cc02;
+  }
+
+  .sprint-selector-container {
+    position: relative;
+  }
+  
+  .sprint-selector-container label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.85rem;
+  }
+
+  .sprint-select {
+    appearance: none;
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    padding-right: 2rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    background-color: white;
+    font-size: 0.9rem;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+  }
+  
+  .sprint-select:hover {
+    border-color: var(--blue);
+  }
+  
+  .sprint-select:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(28, 176, 246, 0.15);
+  }
+  
+  /* Custom dropdown arrow */
+  .sprint-selector-container:after {
+    content: "⌄";
+    position: absolute;
+    right: 12px;
+    top: 36px;
+    font-size: 1.1rem;
+    color: var(--text-light);
+    pointer-events: none;
+  }
+
+  /* Sprint Selector Styling */
+.sprint-selector-wrapper {
+  position: relative;
+  z-index: 9999; 
+}
+
+.sprint-select-button {
+  background-color: white;
+  color: #4b4b4b;
+  border: 2px solid #e5e5e5;
+  padding: 8px 15px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+}
+
+.sprint-select-button:after {
+  content: "⌄";
+  font-size: 16px;
+  transition: transform 0.3s;
+}
+
+.sprint-select-button.open:after {
+  transform: rotate(180deg);
+}
+
+.sprint-select-button:hover {
+  border-color: #1cb0f6;
+  box-shadow: 0 2px 6px rgba(28, 176, 246, 0.2);
+}
+
+.sprint-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transform-origin: top center;
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 10000;
+}
+
+.sprint-dropdown-portal {
+  z-index: 100000;
+  pointer-events: none;
+}
+
+.sprint-dropdown.open {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: all;
+}
+
+.sprint-dropdown::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 20px;
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  transform: rotate(45deg);
+  box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.04);
+}
+
+.sprint-option {
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.sprint-option:hover {
+  background-color: #f5f9fd;
+  border-left-color: #1cb0f6;
+}
+
+.sprint-option.selected {
+  background-color: #f0f8ff;
+  border-left-color: #1cb0f6;
+  font-weight: 600;
+}
+
+.sprint-name {
+  font-size: 14px;
+  color: #333;
+}
+
+.sprint-status {
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.sprint-status.active {
+  background-color: #e6f7e6;
+  color: #58cc02;
+}
+
+.sprint-status.completed {
+  background-color: #e6e8ed;
+  color: #6b778c;
+}
+
+  /* Animation for select */
+  @keyframes selectPop {
+    0% { transform: scale(0.98); }
+    70% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+  }
+  
+  .form-select:focus {
+    animation: selectPop 0.3s ease forwards;
+  }

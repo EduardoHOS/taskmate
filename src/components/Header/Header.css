@@ -1,0 +1,223 @@
+.duolingo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 12px 16px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid #e5e7eb;
+    border-radius: 15px;
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .duolingo-logo {
+    width: 30%;
+    margin-right: 12px;
+  }
+  
+  .duolingo-header h1 {
+    color: #58cc02;
+    font-size: 24px;
+    margin: 0;
+    border: none;
+    padding: 0;
+  }
+  
+  .header-center {
+    flex: 1;
+    max-width: 400px;
+    padding: 0 20px;
+  }
+  
+  .level-indicator {
+    text-align: center;
+    font-weight: 600;
+    color: #4b4b4b;
+    margin-bottom: 4px;
+  }
+  
+  .progress-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    height: 12px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background-color: #58cc02;
+    transition: width 0.3s ease;
+  }
+  
+  .xp-display {
+    font-size: 12px;
+    color: #777;
+    margin-top: 4px;
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .streak-container {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    cursor: pointer;
+    background-color: #ffe082;
+    padding: 5px 10px;
+    border-radius: 15px;
+    transition: transform 0.2s;
+  }
+  
+  .streak-container:hover {
+    transform: scale(1.05);
+  }
+  
+  .streak-icon {
+    font-size: 18px;
+    margin-right: 5px;
+  }
+  
+  .streak-count {
+    font-weight: bold;
+    color: #ff9800;
+  }
+  
+  /* Custom Language Dropdown */
+  .language-selector {
+    margin-right: 20px;
+    position: relative;
+    z-index: 100; /* Ensure dropdown appears above other elements */
+  }
+  
+  .language-selector-button {
+    background-color: #58cc02;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(88, 204, 2, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .language-selector-button::after {
+    content: "🌐";
+    font-size: 16px;
+    transition: transform 0.3s;
+  }
+  
+  .language-selector-button.open::after {
+    transform: rotate(180deg);
+  }
+  
+  .language-selector-button:hover {
+    background-color: #46a602;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(88, 204, 2, 0.4);
+  }
+  
+  .language-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    width: 180px;
+    transform-origin: top right;
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  /* When dropdown is open */
+  .language-dropdown.open {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: all;
+  }
+  
+  /* Each option in the dropdown */
+  .language-option {
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-left: 3px solid transparent;
+  }
+  
+  .language-option:hover {
+    background-color: #f0f8ea;
+    border-left-color: #58cc02;
+  }
+  
+  /* Currently selected option */
+  .language-option.selected {
+    background-color: #e9f7df;
+    border-left-color: #58cc02;
+    font-weight: 600;
+  }
+  
+  /* Flag icons */
+  .language-flag {
+    font-size: 20px;
+  }
+  
+  /* Language name */
+  .language-name {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* Small triangle at the top of dropdown */
+  .language-dropdown::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    transform: rotate(45deg);
+    box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.04);
+  }
+  
+  .profile-button {
+    width: 35px;
+    height: 35px;
+    background-color: #58cc02;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .profile-button:hover {
+    background-color: #46a602;
+  }

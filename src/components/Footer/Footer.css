@@ -1,0 +1,114 @@
+.duolingo-footer {
+    background-color: #fafafa;
+    padding: 20px 0 10px;
+    margin-top: 40px;
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .footer-section {
+    margin-bottom: 20px;
+    min-width: 200px;
+  }
+  
+  .footer-section h3 {
+    color: #58cc02;
+    margin-bottom: 12px;
+    font-size: 18px;
+  }
+  
+  .footer-section p {
+    color: #6b7280;
+    margin: 0;
+  }
+  
+  .stats-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #4b5563;
+  }
+  
+  .stat-icon {
+    font-size: 16px;
+  }
+  
+  .rewards-list {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .reward-badge {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .reward-badge.earned {
+    background-color: #f8fafc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reward-badge.locked {
+    background-color: #f1f1f1;
+    opacity: 0.5;
+  }
+  
+  .reward-badge span {
+    opacity: 1;
+  }
+  
+  .reward-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s;
+    margin-bottom: 5px;
+  }
+  
+  .reward-badge:hover .reward-tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  .footer-bottom p {
+    color: #9ca3af;
+    font-size: 14px;
+    margin: 0;
+  }

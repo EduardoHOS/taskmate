@@ -1,0 +1,52 @@
+/* ======== NOTIFICATION BOXES ======== */
+.box {
+    margin: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .box .title {
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 18px;
+  }
+  
+  .box .description {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  .box .trigger {
+    background-color: transparent;
+    border: 1px solid currentColor;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  
+  .box.warning {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    color: #856404;
+  }
+  
+  .box.success {
+    background-color: #d4edda;
+    border-left: 4px solid #28a745;
+    color: #155724;
+  }
+  
+  .box.error {
+    background-color: #f8d7da;
+    border-left: 4px solid #dc3545;
+    color: #721c24;
+  }
+  
+  .box.info {
+    background-color: #d1ecf1;
+    border-left: 4px solid #17a2b8;
+    color: #0c5460;
+  }

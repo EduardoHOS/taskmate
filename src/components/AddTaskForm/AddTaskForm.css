@@ -1,0 +1,319 @@
+.task-form-container {
+    background: white;
+    border-radius: 16px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    position: relative;
+    border-top: 4px solid var(--primary);
+    animation: fadeIn 0.4s ease;
+  }
+  
+  .task-form-container h3 {
+    color: #4b4b4b;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    position: relative;
+    padding-left: 30px;
+  }
+  
+  .task-form-container h3:before {
+    content: "✨";
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  
+  .task-form {
+    display: grid;
+    gap: 1.2rem;
+  }
+  
+  .form-group {
+    position: relative;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.85rem;
+  }
+  
+  .form-input,
+  .form-textarea,
+  .form-select {
+    width: 100%;
+    padding: 0.7rem;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    background-color: var(--card);
+    color: var(--text);
+    box-sizing: border-box;
+  }
+  
+  .form-input:focus,
+  .form-textarea:focus,
+  .form-select:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(28, 176, 246, 0.15);
+  }
+  
+  .form-textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  .form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  /* Tag input styling */
+  .tag-input-container {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .tag-input {
+    flex: 1;
+  }
+  
+  .add-tag-button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #58cc02; /* Duolingo green */
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  
+  .add-tag-button:hover {
+    background-color: #61df00;
+    transform: scale(1.1);
+  }
+  
+  .tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .tag-edit {
+    background-color: #e8f7e0;
+    color: #58cc02; /* Duolingo green */
+    border-radius: 30px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: all 0.2s;
+    border: 1px solid #58cc02;
+  }
+  
+  .tag-edit:hover {
+    transform: translateY(-2px);
+  }
+  
+  .remove-tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #58cc02;
+    color: white;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .remove-tag:hover {
+    background-color: #ff4b4b;
+    transform: scale(1.1);
+  }
+  
+  .form-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .cancel-button,
+  .submit-button {
+    padding: 0.8rem;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .cancel-button {
+    background-color: #f7f7f7;
+    color: #777;
+    border: 2px solid #e5e5e5;
+  }
+  
+  .cancel-button:hover {
+    background-color: #eee;
+  }
+  
+  .submit-button {
+    background-color: #58cc02; /* Duolingo green */
+    color: white;
+    border: none;
+    box-shadow: 0 4px 0 #46a302; /* Pressed effect */
+  }
+  
+  .submit-button:hover {
+    background-color: #61df00;
+    transform: translateY(-2px);
+  }
+  
+  .submit-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #46a302;
+  }
+  
+  .add-task-button {
+    background-color: #58cc02; /* Duolingo green */
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 0 #46a302; /* Pressed effect */
+    margin-bottom: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .add-task-button:before {
+    content: "+";
+    font-size: 1.3rem;
+  }
+  
+  .add-task-button:hover {
+    background-color: #61df00;
+    transform: translateY(-2px);
+  }
+  
+  .add-task-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #46a302;
+  }
+  
+  /* Priority selection with Duolingo style */
+  .priority-selector {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .priority-option {
+    flex: 1;
+    position: relative;
+  }
+  
+  .priority-option input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    cursor: pointer;
+  }
+  
+  .priority-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.8rem 0.5rem;
+    border: 2px solid #e5e5e5;
+    border-radius: 12px;
+    transition: all 0.2s;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+  .priority-option input:checked + .priority-label {
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .priority-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .priority-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  
+  /* Priority color coding */
+  .priority-low .priority-icon {
+    color: #58cc02; /* Duolingo green */
+  }
+  
+  .priority-medium .priority-icon {
+    color: #ffc800; /* Yellow */
+  }
+  
+  .priority-high .priority-icon {
+    color: #ff4b4b; /* Red */
+  }
+  
+  .priority-option input:checked + .priority-low {
+    background-color: #e8f7e0;
+    border-color: #58cc02;
+  }
+  
+  .priority-option input:checked + .priority-medium {
+    background-color: #fff8e0;
+    border-color: #ffc800;
+  }
+  
+  .priority-option input:checked + .priority-high {
+    background-color: #ffebeb;
+    border-color: #ff4b4b;
+  }
+
+  .submit-button, 
+  .cancel-button {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+    
+    .form-buttons {
+      grid-template-columns: 1fr;
+    }
+  }

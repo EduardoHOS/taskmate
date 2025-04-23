@@ -1,0 +1,61 @@
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 1px solid #e5e7eb;
+    transition: background-color 0.2s;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .task-item:hover {
+    background-color: #f9fafb;
+  }
+  
+  .task-item.completed .task-name {
+    text-decoration: line-through;
+    color: #9ca3af;
+  }
+  
+  .task-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+  
+  .task-checkbox {
+    margin-right: 12px;
+    width: 18px;
+    height: 18px;
+    accent-color: #2563eb;
+  }
+  
+  .task-name {
+    font-size: 16px;
+    color: #1f2937;
+    transition: color 0.2s;
+  }
+  
+  .delete-btn {
+    background: none;
+    border: none;
+    color: #ef4444;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+  }
+  
+  .delete-btn:hover {
+    opacity: 1;
+  }
+  
+  .xp-popup {
+    position: absolute;
+    right: 10px;
+    color: #58cc02;
+    font-weight: bold;
+    animation: float-up 1.5s ease-out forwards;
+    pointer-events: none;
+  }

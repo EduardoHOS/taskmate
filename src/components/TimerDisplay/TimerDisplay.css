@@ -1,0 +1,145 @@
+/* Task Timer Styles */
+.task-timer {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 8px 0;
+    padding: 6px 10px;
+    background-color: #f0f8ff;
+    border-radius: 4px;
+    border-left: 3px solid #0079bf;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+  }
+  
+  .task-timer-paused {
+    border-left-color: #6b778c;
+    background-color: #f8f8f8;
+  }
+  
+  .timer-icon {
+    font-size: 14px;
+    color: #0079bf;
+  }
+  
+  .timer-display {
+    font-family: monospace;
+    font-weight: 600;
+    font-size: 14px;
+    color: #0079bf;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .task-timer-paused .timer-icon,
+  .task-timer-paused .timer-display {
+    color: #6b778c;
+  }
+  
+  .timer-status {
+    font-size: 11px;
+    font-weight: normal;
+    opacity: 0.8;
+    margin-left: 4px;
+  }
+  
+  .task-timer:not(.task-timer-paused) .timer-display {
+    animation: pulse 1s infinite alternate;
+  }
+  
+  /* Timer Laps */
+  .timer-laps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+    margin-bottom: 8px;
+    padding-left: 20px;
+  }
+  
+  .timer-lap {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: #f4f5f7;
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-size: 11px;
+    border-left: 2px solid;
+  }
+  
+  .timer-lap.doing-lap {
+    border-left-color: #4c9aff; /* Development */
+  }
+  
+  .timer-lap.waiting-lap {
+    border-left-color: #f2d600; /* Waiting */
+  }
+  
+  .timer-lap.review-lap {
+    border-left-color: #8993a4; /* Review */
+  }
+  
+  .lap-label {
+    font-weight: 600;
+    color: #172b4d;
+  }
+  
+  .lap-time {
+    font-family: monospace;
+    color: #6b778c;
+  }
+
+  /* Time tracking display in edit modal */
+.time-tracking-display {
+    background-color: #f4f5f7;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 8px;
+  }
+  
+  .time-tracking-total {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #172b4d;
+  }
+  
+  .time-tracking-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .time-tracking-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    background-color: #fff;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+  
+  .time-tracking-item:nth-child(1) {
+    border-left: 3px solid #4c9aff;
+  }
+  
+  .time-tracking-item:nth-child(2) {
+    border-left: 3px solid #f2d600;
+  }
+  
+  .time-tracking-item:nth-child(3) {
+    border-left: 3px solid #8993a4;
+  }
+  
+  .time-label {
+    font-weight: 600;
+    min-width: 100px;
+  }
+  
+  @keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+  }

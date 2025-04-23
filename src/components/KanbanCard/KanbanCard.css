@@ -1,0 +1,353 @@
+/* Duolingo-style sprint badge */
+.sprint-badge {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  color: #555;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.4rem;
+  display: inline-block;
+  max-width: 120px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border-left: 4px solid #ddd;
+}
+
+.sprint-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sprint-badge.active-sprint {
+  background-color: #e8f7e0;
+  color: #58cc02;
+  border-left: 4px solid #58cc02;
+}
+
+/* Duolingo-style cards */
+.card-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 0.8rem;
+  margin-bottom: 0.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-left: 4px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.card-container.priority-high {
+  border-left-color: #ff4b4b;
+}
+
+.card-container.priority-medium {
+  border-left-color: #ffc800;
+}
+
+.card-container.priority-low {
+  border-left-color: #58cc02;
+}
+
+.card-container.completed {
+  background-color: #f9f9f9;
+  border-left-color: #58cc02;
+}
+
+/* REMOVED: the overlapping check mark ✓ that was created with :before */
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.card-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin: 0;
+  color: #3c3c3c;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-description {
+  font-size: 0.8rem;
+  margin-bottom: 0.7rem;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #666;
+}
+
+/* Fixed: Task size indicators with proper font size */
+.task-size {
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  color: #777;
+  font-weight: 700;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+/* Fixed: Colorful commit type badges with proper font sizing */
+.commit-type-badge {
+  position: static;
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  margin-top: -0.2rem; /* Tighten spacing with header */
+  font-size: 0.75rem;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.commit-type {
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #1cb0f6;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Fixed: Commit type icon sizes */
+.commit-type-icon {
+  font-size: 1.1rem !important;
+  display: inline-block !important;
+  margin-right: 2px;
+}
+
+.commit-type.feat { 
+  background-color: #58cc02;
+  background-image: linear-gradient(135deg, #58cc02, #46a302);
+}
+.commit-type.fix { 
+  background-color: #ff4b4b;
+  background-image: linear-gradient(135deg, #ff4b4b, #e04141);
+}
+.commit-type.docs { 
+  background-color: #1cb0f6;
+  background-image: linear-gradient(135deg, #1cb0f6, #0090d1);
+}
+.commit-type.style { 
+  background-color: #ffc800;
+  background-image: linear-gradient(135deg, #ffc800, #ffb020);
+}
+.commit-type.refactor { 
+  background-color: #8e44ad;
+  background-image: linear-gradient(135deg, #8e44ad, #7d3b98);
+}
+.commit-type.test { 
+  background-color: #2ecc71;
+  background-image: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+.commit-type.ci { 
+  background-color: #3498db;
+  background-image: linear-gradient(135deg, #3498db, #2980b9);
+}
+.commit-type.chore { 
+  background-color: #95a5a6;
+  background-image: linear-gradient(135deg, #95a5a6, #7f8c8d);
+}
+
+/* Fixed: Action buttons with Duolingo style */
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.card-container:hover .card-actions {
+  opacity: 1;
+}
+
+/* Fixed: Action buttons size and font */
+.action-button {
+  width: 26px;
+  height: 26px;
+  border-radius: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 2px solid #eee;
+  margin-left: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px !important;
+}
+
+.action-button:hover {
+  transform: scale(1.15);
+  border-color: transparent;
+}
+
+.edit-button:hover {
+  background-color: #1cb0f6;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #ff4b4b;
+  color: white;
+}
+
+.archive-button:hover {
+  background-color: #ffc800;
+  color: white;
+}
+
+/* Tags with Duolingo style */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.tag {
+  background-color: #e8f7e0;
+  color: #58cc02;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  border: 1px solid #58cc02;
+  transition: transform 0.2s;
+}
+
+.tag:hover {
+  transform: translateY(-2px);
+}
+
+/* XP indicator for completed tasks */
+.xp-indicator {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: #ffc800;
+  color: white;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.xp-indicator:before {
+  content: "+";
+}
+
+.xp-indicator:after {
+  content: " XP";
+}
+
+/* Timer display with Duolingo style */
+.timer-display {
+  background-color: #f7f7f7;
+  padding: 0.3rem;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.75rem;
+  margin-top: 0.6rem;
+  color: #777;
+}
+
+.timer-display.running {
+  background-color: #e8f7e0;
+  color: #58cc02;
+  animation: pulse 2s infinite;
+}
+
+.card-footer {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+/* Fixed: Time estimate with icon */
+.time-estimate {
+  font-size: 0.75rem;
+  color: #777;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.time-icon {
+  font-size: 1rem !important;
+}
+
+/* Improved completion indicator */
+.completed-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #58cc02;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.card-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Add dragging style */
+.card-container.dragging {
+  opacity: 0.7;
+  transform: scale(1.02);
+}
+
+/* Added completion ribbon for better UX */
+.completion-ribbon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #58cc02;
+  border-radius: 10px 10px 0 0;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}

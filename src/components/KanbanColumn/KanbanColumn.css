@@ -1,0 +1,240 @@
+.column-container {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 0.75rem;
+  min-width: 220px;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  height: 68vh;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  border-top: 4px solid #ddd;
+}
+
+.column-container.drag-over {
+  box-shadow: 0 0 0 2px #58cc02;
+  transform: translateY(-3px);
+}
+
+.column-container[data-column-id="backlog"] {
+  border-top-color: #dfe1e6;
+}
+
+.column-container[data-column-id="doing"] {
+  border-top-color: #1cb0f6; /* Duolingo blue */
+}
+
+.column-container[data-column-id="waitingReview"] {
+  border-top-color: #ffc800; /* Yellow */
+}
+
+.column-container[data-column-id="review"] {
+  border-top-color: #ff9600; /* Orange */
+}
+
+.column-container[data-column-id="done"] {
+  border-top-color: #58cc02; /* Duolingo green */
+}
+
+.column-header {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.3rem;
+}
+
+.column-title {
+  font-size: 0.9rem;
+  padding-left: 22px;
+}
+
+/* Column icons */
+.column-title:before {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+}
+
+.column-container[data-column-id="backlog"] .column-title:before {
+  content: "📝";
+}
+
+.column-container[data-column-id="doing"] .column-title:before {
+  content: "🔨";
+}
+
+.column-container[data-column-id="waitingReview"] .column-title:before {
+  content: "⏳";
+}
+
+.column-container[data-column-id="review"] .column-title:before {
+  content: "👀";
+}
+
+.column-container[data-column-id="done"] .column-title:before {
+  content: "🎉";
+}
+
+.task-count {
+  background-color: #eee;
+  color: #777;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.task-list-container {
+  overflow-y: auto;
+  flex-grow: 1;
+  padding-right: 0.3rem;
+}
+
+/* Custom scrollbar */
+.task-list-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.task-list-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.task-list-container::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 10px;
+}
+
+.task-list-container::-webkit-scrollbar-thumb:hover {
+  background: #ccc;
+}
+
+/* Add task button */
+.add-task-button {
+  background-color: white;
+  border: 2px dashed #ddd;
+  border-radius: 12px;
+  padding: 0.75rem;
+  width: 100%;
+  text-align: center;
+  color: #777;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.add-task-button:hover {
+  border-color: #58cc02;
+  color: #58cc02;
+  background-color: #f5fbf0;
+}
+
+/* Add task form */
+.add-task-form-column {
+  background-color: white;
+  border-radius: 12px;
+  padding: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-top: 0.5rem;
+  border: 2px solid #58cc02; /* Duolingo green */
+}
+
+.task-input-column {
+  width: 100%;
+  padding: 0.5rem 0.6rem; 
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem; 
+  height: 36px; 
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  line-height: 1.2;
+}
+
+.task-input-column:focus {
+  outline: none;
+  border-color: #1cb0f6;
+  box-shadow: 0 0 0 2px rgba(28, 176, 246, 0.2);
+}
+
+.add-button-column, .kanban-cancel-button {
+  height: 34px;
+  padding: 0 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.5rem;
+  height: 34px;
+}
+
+.add-button-column {
+  flex: 1;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #58cc02; /* Duolingo green */
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-button-column:hover {
+  background-color: #61df00;
+}
+
+.kanban-cancel-button {
+  padding: 0.5rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  background-color: white;
+  color: #777;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.kanban-cancel-button:hover {
+  background-color: #f7f7f7;
+}
+
+/* Empty column indicator */
+.column-container:empty:after {
+  content: "No tasks yet! Add one to get started.";
+  display: block;
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #999;
+  font-style: italic;
+}
+
+/* Column hover effect */
+.column-container:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Block warning */
+.blocked-move-warning {
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  color: #856404;
+  padding: 0.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.warning-icon {
+  font-size: 1.2rem;
+}
