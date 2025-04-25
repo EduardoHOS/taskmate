@@ -9,12 +9,10 @@ export const ArchiveManager = () => {
   const [selectedSprint, setSelectedSprint] = useState('all');
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [viewMode, setViewMode] = useState('table'); // 'table' or 'card'
+  const [viewMode, setViewMode] = useState('table'); 
 
   
-  // Filter archived tasks based on selected sprint and search term
   useEffect(() => {
-    // Safety check first
     if (!archivedTasks || !Array.isArray(archivedTasks)) {
       setFilteredTasks([]);
       return;
@@ -22,13 +20,11 @@ export const ArchiveManager = () => {
     
     let filtered = archivedTasks;
     
-    // Filter by sprint
     if (selectedSprint !== 'all') {
       const sprintId = parseInt(selectedSprint, 10);
       filtered = filtered.filter(task => task.sprintId === sprintId);
     }
     
-    // Filter by search term
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
       filtered = filtered.filter(task => 
@@ -40,7 +36,6 @@ export const ArchiveManager = () => {
       );
     }
     
-    // Sort by most recently archived first
     filtered.sort((a, b) => b.archivedAt - a.archivedAt);
     
     setFilteredTasks(filtered);
@@ -62,7 +57,6 @@ export const ArchiveManager = () => {
     }
   };
   
-  // Safe way to handle possibly undefined texts
   const getArchivedTasksText = () => {
     if (texts && texts.archivedTasks && typeof texts.archivedTasks === 'string') {
       return texts.archivedTasks.toLowerCase();

@@ -6,7 +6,6 @@ export const DebugPanel = () => {
   const [isOpen, setIsOpen] = useState(false);
   const contextData = useTaskContext();
   
-  // First return: simple toggle button
   if (!isOpen) {
     return (
       <button 
@@ -18,7 +17,6 @@ export const DebugPanel = () => {
     );
   }
   
-  // Second return: full debug panel
   return (
     <div className="debug-panel">
       <div className="debug-header">

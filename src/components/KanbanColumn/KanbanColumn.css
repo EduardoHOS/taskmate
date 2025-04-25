@@ -22,19 +22,19 @@
 }
 
 .column-container[data-column-id="doing"] {
-  border-top-color: #1cb0f6; /* Duolingo blue */
+  border-top-color: #1cb0f6; 
 }
 
 .column-container[data-column-id="waitingReview"] {
-  border-top-color: #ffc800; /* Yellow */
+  border-top-color: #ffc800; 
 }
 
 .column-container[data-column-id="review"] {
-  border-top-color: #ff9600; /* Orange */
+  border-top-color: #ff9600; 
 }
 
 .column-container[data-column-id="done"] {
-  border-top-color: #58cc02; /* Duolingo green */
+  border-top-color: #58cc02; 
 }
 
 .column-header {
@@ -47,7 +47,6 @@
   padding-left: 22px;
 }
 
-/* Column icons */
 .column-title:before {
   position: absolute;
   left: 0;
@@ -91,7 +90,6 @@
   padding-right: 0.3rem;
 }
 
-/* Custom scrollbar */
 .task-list-container::-webkit-scrollbar {
   width: 6px;
 }
@@ -110,7 +108,6 @@
   background: #ccc;
 }
 
-/* Add task button */
 .add-task-button {
   background-color: white;
   border: 2px dashed #ddd;
@@ -131,14 +128,13 @@
   background-color: #f5fbf0;
 }
 
-/* Add task form */
 .add-task-form-column {
   background-color: white;
   border-radius: 12px;
   padding: 0.75rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   margin-top: 0.5rem;
-  border: 2px solid #58cc02; /* Duolingo green */
+  border: 2px solid #58cc02; 
 }
 
 .task-input-column {
@@ -180,7 +176,7 @@
   padding: 0.5rem;
   border: none;
   border-radius: 8px;
-  background-color: #58cc02; /* Duolingo green */
+  background-color: #58cc02; 
   color: white;
   font-weight: 700;
   cursor: pointer;
@@ -206,7 +202,6 @@
   background-color: #f7f7f7;
 }
 
-/* Empty column indicator */
 .column-container:empty:after {
   content: "No tasks yet! Add one to get started.";
   display: block;
@@ -216,12 +211,10 @@
   font-style: italic;
 }
 
-/* Column hover effect */
 .column-container:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-/* Block warning */
 .blocked-move-warning {
   background-color: #fff3cd;
   border: 1px solid #ffeeba;

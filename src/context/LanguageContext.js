@@ -1,6 +1,5 @@
 import { createContext, useState, useContext, useEffect } from 'react';
 
-// Translation objects
 const translations = {
   en: {
     appTitle: "TaskMate",

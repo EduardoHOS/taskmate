@@ -8,7 +8,7 @@ const KanbanColumn = ({
   columnId, 
   title, 
   onEditTask,
-  tasks = null // Accept filtered tasks as an optional prop
+  tasks = null 
 }) => {
   const { getTasksByColumn, moveTask, addTask: contextAddTask, isBackwardMove, activeSprint } = useTaskContext();
   const { texts } = useLanguage();
@@ -17,7 +17,6 @@ const KanbanColumn = ({
   const [isDragOver, setIsDragOver] = useState(false);
   const [showBlockedWarning, setShowBlockedWarning] = useState(false);
 
-  // Use tasks passed as prop if provided, otherwise get from context
   const columnTasks = tasks !== null ? tasks : getTasksByColumn(columnId);
 
   const handleDragOver = (e) => {
@@ -37,7 +36,6 @@ const KanbanColumn = ({
     const task = document.querySelector(`[data-task-id="${taskId}"]`);
     const currentStatus = task?.getAttribute('data-column');
     
-    // Check if this would be a backward move
     if (currentStatus && isBackwardMove(currentStatus, columnId)) {
       // Show warning
       setShowBlockedWarning(true);
@@ -45,17 +43,15 @@ const KanbanColumn = ({
       return;
     }
     
-    // Perform the move if it's valid
     moveTask(taskId, columnId);
   };
 
   const handleAddTask = () => {
     if (newTaskName.trim()) {
-      // Call the renamed context function, include sprintId
       contextAddTask({
         name: newTaskName,
         status: columnId,
-        sprintId: activeSprint // Assign to active sprint by default
+        sprintId: activeSprint 
       });
       setNewTaskName('');
       setIsAddingTask(false);

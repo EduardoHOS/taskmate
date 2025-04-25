@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useTaskContext } from '../../context/TaskContext';
 import { useLanguage } from '../../context/LanguageContext';
-import Logo from "../../assets/duolingo-owl.gif";  // Adjust the path as necessary
+import Logo from "../../assets/duolingo-owl.gif"; 
 import './Header.css'; 
 
 export const Header = () => {
@@ -16,7 +16,6 @@ export const Header = () => {
   const { xp, level } = useTaskContext();
   const { language, texts, changeLanguage } = useLanguage();
   
-  // Calculate XP progress within current level (0-100)
   const xpProgress = xp % 100;
   
   const handleStreakClick = () => {
@@ -29,7 +28,6 @@ export const Header = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
   
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -43,7 +41,6 @@ export const Header = () => {
     };
   }, []);
   
-  // Get flag emoji based on language code
   const getLanguageFlag = (code) => {
     switch(code) {
       case 'en': return '🇺🇸';
@@ -55,7 +52,6 @@ export const Header = () => {
     }
   };
   
-  // Get language name based on language code
   const getLanguageName = (code) => {
     switch(code) {
       case 'en': return 'English';

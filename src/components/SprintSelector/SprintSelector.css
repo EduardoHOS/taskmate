@@ -36,7 +36,6 @@
     box-shadow: 0 0 0 3px rgba(28, 176, 246, 0.2);
   }
   
-  /* Custom dropdown arrow */
   .form-group:after {
     position: absolute;
     right: 15px;
@@ -46,12 +45,10 @@
     pointer-events: none;
   }
   
-  /* Sprint options styling */
   .form-select option {
     padding: 10px;
   }
   
-  /* Active sprint styling */
   .form-select option:checked {
     background-color: #e8f7e0;
     color: #58cc02;
@@ -94,7 +91,6 @@
     box-shadow: 0 0 0 3px rgba(28, 176, 246, 0.15);
   }
   
-  /* Custom dropdown arrow */
   .sprint-selector-container:after {
     content: "⌄";
     position: absolute;
@@ -105,7 +101,6 @@
     pointer-events: none;
   }
 
-  /* Sprint Selector Styling */
 .sprint-selector-wrapper {
   position: relative;
   z-index: 9999; 
@@ -228,7 +223,6 @@
   color: #6b778c;
 }
 
-  /* Animation for select */
   @keyframes selectPop {
     0% { transform: scale(0.98); }
     70% { transform: scale(1.02); }

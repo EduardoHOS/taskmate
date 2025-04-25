@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import './TaskCard.css'; // Assuming you have a CSS file for styles
+import './TaskCard.css'; 
 
 export const TaskCard = ({ task, handleToggleComplete, handleDelete }) => {
   const [showXp, setShowXp] = useState(false);
   
-  // Guard against undefined task prop
   if (!task) return null;
   
   const handleComplete = () => {

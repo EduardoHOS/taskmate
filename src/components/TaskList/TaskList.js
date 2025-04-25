@@ -5,7 +5,7 @@ import { TaskCard } from '../TaskCard';
 import { BoxCard } from '../BoxCard';
 import { AddTaskForm } from '../AddTaskForm';
 import { FilterControls } from '../FilterControls';
-import './TaskList.css'; // Assuming you have a CSS file for styles
+import './TaskList.css'; 
 
 export const TaskList = () => {
   const { filteredTasks, handleDelete, handleToggleComplete, clearCompleted } = useTaskContext();

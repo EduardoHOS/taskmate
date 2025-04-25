@@ -4,7 +4,6 @@ import { useLanguage } from '../../context/LanguageContext';
 import TimerDisplay from '../TimerDisplay/TimerDisplay';
 import './KanbanCard.css';
 
-// Commit type icons with their emojis
 const COMMIT_TYPE_ICONS = {
   feat: '✨',
   fix: '🐛',
@@ -21,26 +20,22 @@ const KanbanCard = ({ task, onEdit, columnId }) => {
   const { texts } = useLanguage();
   const [isDragging, setIsDragging] = useState(false);
 
-  // Get sprint name from ID
   const getSprintName = (sprintId) => {
     if (!sprintId) return 'No Sprint';
     const sprint = sprints.find(s => s.id === sprintId);
     return sprint ? sprint.name : 'Unknown Sprint';
   };
   
-  // Check if sprint is active
   const isActiveSprintTask = () => {
     if (!task.sprintId) return false;
     const sprint = sprints.find(s => s.id === task.sprintId);
     return sprint ? sprint.status === 'active' : false;
   };
 
-  // Drag handlers
   const handleDragStart = (e) => {
     e.dataTransfer.setData('taskId', task.id);
     setIsDragging(true);
     
-    // Add data attributes for backward move detection
     e.target.setAttribute('data-task-id', task.id);
     e.target.setAttribute('data-column', columnId);
   };
@@ -49,15 +44,13 @@ const KanbanCard = ({ task, onEdit, columnId }) => {
     setIsDragging(false);
   };
 
-  // Add confirmation for archive action
   const handleArchiveWithConfirmation = (e) => {
-    e.stopPropagation(); // Prevent card click event
+    e.stopPropagation();
     if (window.confirm(texts.confirmArchive || 'Are you sure you want to archive this task?')) {
       archiveTask(task.id);
     }
   };
 
-  // Format the estimate time
   const formatEstimateTime = (minutes) => {
     if (!minutes) return '';
     if (minutes < 60) return `${minutes}m`;
@@ -68,35 +61,30 @@ const KanbanCard = ({ task, onEdit, columnId }) => {
     return mins > 0 ? `${hours}h ${mins}m` : `${hours}h`;
   };
 
-  // Get CSS class based on task priority
   const getPriorityClass = () => {
     if (!task.priority) return '';
     return `priority-${task.priority.toLowerCase()}`;
   };
 
-  // Map stored size values to display values
   const displaySize = (sizeValue) => {
     if (!sizeValue) return '';
     
-    // Handle both formats
     if (sizeValue === 'small' || sizeValue === 'P') return 'P';
     if (sizeValue === 'medium' || sizeValue === 'M') return 'M';
     if (sizeValue === 'large' || sizeValue === 'G') return 'G';
     if (sizeValue === 'extra_large' || sizeValue === 'GG') return 'GG';
     
-    return sizeValue; // Just return if already in display format
+    return sizeValue; 
   };
 
-  // Handle card click - edit task
   const handleCardClick = (e) => {
     if (!e.target.closest('.action-button')) {
       onEdit(task);
     }
   };
 
-  // Handle delete with confirmation
   const handleDeleteWithConfirmation = (e) => {
-    e.stopPropagation(); // Prevent card click event
+    e.stopPropagation(); 
     if (window.confirm(texts.confirmDelete || 'Are you sure you want to delete this task?')) {
       handleDelete(task.id);
     }

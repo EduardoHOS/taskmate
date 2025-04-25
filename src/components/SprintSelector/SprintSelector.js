@@ -10,21 +10,16 @@ export const SprintSelector = ({ value, onChange, label = "Sprint", required = f
   const buttonRef = useRef(null);
   const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0, width: 0 });
   
-  // Get the current sprint
   const currentValue = value || activeSprint;
   const currentSprint = sprints.find(sprint => sprint.id === currentValue) || {};
   
-  // Filter to show active sprints first, then completed
   const sortedSprints = [...sprints].sort((a, b) => {
-    // Sort by status first (active before completed)
     if (a.status !== b.status) {
       return a.status === 'active' ? -1 : 1;
     }
-    // Then sort by name
     return a.name.localeCompare(b.name);
   });
   
-  // Update dropdown position when opening
   useEffect(() => {
     if (isOpen && buttonRef.current) {
       const rect = buttonRef.current.getBoundingClientRect();
@@ -36,7 +31,6 @@ export const SprintSelector = ({ value, onChange, label = "Sprint", required = f
     }
   }, [isOpen]);
   
-  // Handle click outside to close dropdown
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -52,13 +46,11 @@ export const SprintSelector = ({ value, onChange, label = "Sprint", required = f
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen]);
   
-  // Handle sprint selection
   const handleSelectSprint = (sprintId) => {
     onChange(sprintId);
     setIsOpen(false);
   };
   
-  // Render dropdown via portal
   const renderDropdown = () => {
     if (!isOpen) return null;
     

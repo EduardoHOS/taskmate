@@ -7,7 +7,6 @@ import { SprintSelector } from '../SprintSelector/SprintSelector';
 import './KanbanBoard.css';
 
 export const KanbanBoard = () => {
-  // Fix missing dependencies in destructuring
   const { 
     COLUMNS, 
     activeSprint,
@@ -26,12 +25,10 @@ export const KanbanBoard = () => {
   const [showSprintForm, setShowSprintForm] = useState(false);
   const [newSprintName, setNewSprintName] = useState('');
 
-  // Update selected sprint when active sprint changes
   useEffect(() => {
     setSelectedSprint(activeSprint);
   }, [activeSprint]);
   
-  // Filter tasks by selected sprint
   useEffect(() => {
     if (selectedSprint) {
       const sprintTasks = getTasksBySprint(selectedSprint);
@@ -77,17 +74,14 @@ export const KanbanBoard = () => {
     return filteredTasks.filter(task => task.status === columnId);
   };
 
-  // Get current sprint name
   const getSelectedSprintName = () => {
     if (!selectedSprint) return '';
     const sprint = sprints.find(s => s.id === selectedSprint);
     return sprint ? sprint.name : '';
   };
 
-  // Check if selected sprint is active
   const isSelectedSprintActive = selectedSprint === activeSprint;
   
-  // Check if selected sprint is completed
   const isSelectedSprintCompleted = () => {
     if (!selectedSprint) return false;
     const sprint = sprints.find(s => s.id === selectedSprint);

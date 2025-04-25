@@ -26,7 +26,6 @@ export const SprintManager = () => {
     goal: ''
   });
   
-  // Calculate sprint statistics
   useEffect(() => {
     const stats = {};
     
@@ -113,15 +112,12 @@ export const SprintManager = () => {
       return;
     }
     
-    // Find the next active sprint or create one
     const activeSprintsList = sprints.filter(s => s.status === 'active' && s.id !== sprintId);
     let nextSprintId;
     
     if (activeSprintsList.length > 0) {
-      // Use the first active sprint as next
       nextSprintId = activeSprintsList[0].id;
     } else {
-      // Create a new sprint if none exists
       const newSprintData = {
         name: `Sprint ${sprints.length + 1}`,
         startDate: Date.now(),

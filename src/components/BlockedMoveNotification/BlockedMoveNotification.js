@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
 import { useTaskContext } from '../../context/TaskContext';
 import { useLanguage } from '../../context/LanguageContext';
-import './BlockedMoveNotification.css'; // Assuming you have a CSS file for styles
+import './BlockedMoveNotification.css'; 
 
 const BlockedMoveNotification = () => {
   const { blockedMove, COLUMNS } = useTaskContext();
   const { texts } = useLanguage();
   
   useEffect(() => {
-    // Add a CSS class to body when notification is shown
     if (blockedMove) {
       document.body.classList.add('has-notification');
     } else {
@@ -22,7 +21,6 @@ const BlockedMoveNotification = () => {
   
   if (!blockedMove) return null;
   
-  // Map column IDs to localized names
   const getColumnName = (columnId) => {
     switch(columnId) {
       case COLUMNS.BACKLOG: return texts.columns?.backlog || "Backlog";

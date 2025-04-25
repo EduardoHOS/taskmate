@@ -4,7 +4,6 @@ import { useLanguage } from '../../context/LanguageContext';
 import { SprintSelector } from '../SprintSelector/SprintSelector'; 
 import './TaskEditModal.css';
 
-// Commit type definitions with colors and icons
 const COMMIT_TYPES = {
   feat: { 
     label: 'Feature', 
@@ -48,7 +47,6 @@ const COMMIT_TYPES = {
   }
 };
 
-// Helper function to get appropriate color for commit type
 function getCommitTypeColor(type) {
   switch(type) {
     case 'feat': return '#0052cc';
@@ -71,10 +69,8 @@ const TaskEditModal = ({ task, onClose }) => {
   const tagInputRef = useRef(null);
   const modalContentRef = useRef(null);
   
-  // Size mapping functions to standardize between UI and storage
   const mapSizeToValue = (size) => {
-    // Map from stored value to form value
-    if (!size) return 'M'; // Default
+    if (!size) return 'M'; 
     if (size === 'small' || size === 'P') return 'P';
     if (size === 'medium' || size === 'M') return 'M';
     if (size === 'large' || size === 'G') return 'G';
@@ -83,7 +79,6 @@ const TaskEditModal = ({ task, onClose }) => {
   };
 
   const mapValueToSize = (value) => {
-    // Map from form value to stored value
     if (value === 'P') return 'small';
     if (value === 'M') return 'medium';
     if (value === 'G') return 'large';
@@ -91,7 +86,6 @@ const TaskEditModal = ({ task, onClose }) => {
     return 'medium'; // Default
   };
   
-  // Format elapsed time from seconds to HH:MM:SS
   const formatElapsedTime = (seconds) => {
     if (!seconds) return '00:00:00';
     
@@ -104,7 +98,6 @@ const TaskEditModal = ({ task, onClose }) => {
       .join(":");
   };
   
-  // Initialize form with proper mapped values
   const [formData, setFormData] = useState({
     name: task.name || '',
     description: task.description || '',
@@ -118,7 +111,6 @@ const TaskEditModal = ({ task, onClose }) => {
     sprintId: task.sprintId 
   });
   
-  // Set estimated minutes based on size selection
   useEffect(() => {
     const sizeTimeMapping = {
       'P': 15,   // 15 minutes
@@ -133,21 +125,18 @@ const TaskEditModal = ({ task, onClose }) => {
     }));
   }, [formData.size]);
   
-  // Track changes to set the dirty state
   useEffect(() => {
     setIsDirty(true);
   }, [formData.name, formData.description, formData.status, 
     formData.priority, formData.size, formData.commitType, 
     formData.tags, formData.sprintId]);
   
-  // Focus on name field when modal opens
   useEffect(() => {
     const timer = setTimeout(() => {
       const nameInput = document.getElementById('name');
       if (nameInput) nameInput.focus();
     }, 100);
     
-    // Add escape key handler to close modal
     const handleEscKey = (e) => {
       if (e.key === 'Escape') handleCloseAttempt();
     };
@@ -181,7 +170,6 @@ const TaskEditModal = ({ task, onClose }) => {
         newTag: ''
       }));
       
-      // Focus back to tag input for quick consecutive additions
       if (tagInputRef.current) tagInputRef.current.focus();
     }
   };
@@ -205,11 +193,10 @@ const TaskEditModal = ({ task, onClose }) => {
     
     const { newTag, ...updatedTaskData } = formData;
     
-    // Create the final task object with proper size mapping and all required properties
     const finalTask = {
       ...updatedTaskData,
-      id: task.id, // Ensure ID is included
-      size: mapValueToSize(updatedTaskData.size), // Convert size for storage
+      id: task.id, 
+      size: mapValueToSize(updatedTaskData.size), 
       timeTracking: task.timeTracking || {
         doing: 0,
         waitingReview: 0,
@@ -219,19 +206,17 @@ const TaskEditModal = ({ task, onClose }) => {
       columnEntryTime: task.columnEntryTime || Date.now()
     };
     
-    console.log('Saving task with data:', finalTask); // Debug output
+    console.log('Saving task with data:', finalTask); 
     
     editTask(finalTask);
     setIsDirty(false);
     setShowSaveNotification(true);
     
-    // Hide the save notification after 2 seconds
     setTimeout(() => {
       setShowSaveNotification(false);
     }, 2000);
   };
   
-  // Confirm before closing if there are unsaved changes
   const handleCloseAttempt = () => {
     if (isDirty) {
       const confirmClose = window.confirm(texts.unsavedChanges || "You have unsaved changes! Are you sure you want to close?");
@@ -243,7 +228,6 @@ const TaskEditModal = ({ task, onClose }) => {
     }
   };
   
-  // Prevent modal from closing when clicking on the modal content
   const handleModalContentClick = (e) => {
     e.stopPropagation();
   };

@@ -96,7 +96,6 @@
     color: #ff9800;
   }
   
-  /* Custom Language Dropdown */
   .language-selector {
     margin-right: 20px;
     position: relative;
@@ -151,14 +150,12 @@
     transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
   
-  /* When dropdown is open */
   .language-dropdown.open {
     opacity: 1;
     transform: scale(1);
     pointer-events: all;
   }
   
-  /* Each option in the dropdown */
   .language-option {
     padding: 10px 15px;
     display: flex;
@@ -174,25 +171,21 @@
     border-left-color: #58cc02;
   }
   
-  /* Currently selected option */
   .language-option.selected {
     background-color: #e9f7df;
     border-left-color: #58cc02;
     font-weight: 600;
   }
   
-  /* Flag icons */
   .language-flag {
     font-size: 20px;
   }
   
-  /* Language name */
   .language-name {
     font-size: 14px;
     color: #333;
   }
   
-  /* Small triangle at the top of dropdown */
   .language-dropdown::before {
     content: "";
     position: absolute;

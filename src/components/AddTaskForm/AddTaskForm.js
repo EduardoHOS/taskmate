@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTaskContext } from '../../context/TaskContext';
 import { useLanguage } from '../../context/LanguageContext';
-import './AddTaskForm.css'; // Assuming you have a CSS file for styles
+import './AddTaskForm.css'; 
 
 export const AddTaskForm = () => {
   const [newTaskName, setNewTaskName] = useState('');

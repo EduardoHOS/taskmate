@@ -258,21 +258,17 @@ export const TaskProvider = ({ children }) => {
   // Complete a sprint and move incomplete tasks to next sprint
   const completeSprint = (sprintId, nextSprintId) => {
     try {
-      // 1. Find sprint to complete
       const sprintToComplete = sprints.find(s => s.id === sprintId);
       if (!sprintToComplete) {
         console.error(`Sprint with ID ${sprintId} not found`);
         return;
       }
       
-      // 2. Update sprint status
       updateSprint(sprintId, { status: 'completed', endDate: Date.now() });
       
-      // 3. Move incomplete tasks to next sprint
       if (nextSprintId) {
         setTasks(prev => {
           return prev.map(task => {
-            // If task is in current sprint and not completed, move to next sprint
             if (task.sprintId === sprintId && !task.completed) {
               logActivity('Moved task to next sprint', { 
                 taskId: task.id, 
@@ -286,7 +282,6 @@ export const TaskProvider = ({ children }) => {
         });
       }
       
-      // 4. Set active sprint to next sprint
       if (nextSprintId) {
         setActiveSprint(nextSprintId);
       }
@@ -297,7 +292,6 @@ export const TaskProvider = ({ children }) => {
     }
   };
   
-  // Set active sprint
   const setCurrentSprint = (sprintId) => {
     try {
       const sprintExists = sprints.some(s => s.id === sprintId);
@@ -313,7 +307,6 @@ export const TaskProvider = ({ children }) => {
     }
   };
   
-  // Get tasks for a specific sprint
   const getTasksBySprint = (sprintId) => {
     try {
       return tasks.filter(task => task.sprintId === sprintId);
@@ -323,7 +316,6 @@ export const TaskProvider = ({ children }) => {
     }
   };
   
-  // Get all active sprints
   const getActiveSprints = () => {
     try {
       return sprints.filter(sprint => sprint.status === 'active');
@@ -339,7 +331,6 @@ export const TaskProvider = ({ children }) => {
       // Generate a unique ID for the task
       const id = generateUniqueId();
       
-      // Initialize timeTracking for new task
       const taskWithTime = {
         id,
         ...newTask,
@@ -350,8 +341,8 @@ export const TaskProvider = ({ children }) => {
           review: 0,
           totalTime: 0
         },
-        columnEntryTime: Date.now(), // Track when task enters a column
-        createdAt: Date.now()        // Track when task was created
+        columnEntryTime: Date.now(), 
+        createdAt: Date.now()        
       };
       
       setTasks(prevTasks => [...prevTasks, taskWithTime]);
@@ -405,7 +396,7 @@ export const TaskProvider = ({ children }) => {
         const updatedTasks = prevTasks.map(task => {
           if (task.id === editedTask.id) {
             const updatedTask = { 
-              ...task,          // Start with all existing properties
+              ...task,          
               ...editedTask,    // Override with edited properties
               // Preserve timing data if not provided in edited task
               timeTracking: editedTask.timeTracking || task.timeTracking,
@@ -413,7 +404,7 @@ export const TaskProvider = ({ children }) => {
               sprintId: editedTask.sprintId || task.sprintId || activeSprint // Ensure sprint ID is preserved
             };
             
-            console.log('Task after update:', updatedTask); // Debug output
+            console.log('Task after update:', updatedTask);
             
             logActivity('Edited task', { 
               id: editedTask.id, 
@@ -441,7 +432,6 @@ export const TaskProvider = ({ children }) => {
   // Move task between columns
   const moveTask = (taskId, targetColumn) => {
     try {
-      // Ensure taskId is an integer
       const parsedTaskId = parseInt(taskId, 10);
       
       if (isNaN(parsedTaskId)) {
@@ -452,7 +442,6 @@ export const TaskProvider = ({ children }) => {
       setTasks(prevTasks => {
         return prevTasks.map(task => {
           if (task.id === parsedTaskId) {
-            // Skip time tracking if moving to the same column
             if (task.status === targetColumn) {
               logActivity('Task already in column', { 
                 id: parsedTaskId, 
@@ -461,12 +450,10 @@ export const TaskProvider = ({ children }) => {
               return task;
             }
             
-            // Calculate time spent in previous column
             const now = Date.now();
             const timeInColumn = task.columnEntryTime ? 
               Math.floor((now - task.columnEntryTime) / 1000) : 0;
             
-            // Create proper copy of the timeTracking object with defaults
             const timeTracking = {
               doing: task.timeTracking?.doing || 0,
               waitingReview: task.timeTracking?.waitingReview || 0,
@@ -474,9 +461,7 @@ export const TaskProvider = ({ children }) => {
               totalTime: task.timeTracking?.totalTime || 0
             };
             
-            // Only update time if we've spent some time in the column
             if (timeInColumn > 0) {
-              // Update time for the previous column
               if (task.status === COLUMNS.DOING) {
                 timeTracking.doing += timeInColumn;
               } else if (task.status === COLUMNS.WAITING_REVIEW) {
@@ -485,16 +470,13 @@ export const TaskProvider = ({ children }) => {
                 timeTracking.review += timeInColumn;
               }
               
-              // Update total time
               timeTracking.totalTime = 
                 timeTracking.doing + 
                 timeTracking.waitingReview + 
                 timeTracking.review;
             }
             
-            // Add XP for moving to DONE column
             if (targetColumn === COLUMNS.DONE && task.status !== COLUMNS.DONE) {
-              // Award XP based on task size when completing
               const xpAward = task.size === 'large' ? 30 : 
                               task.size === 'medium' ? 20 : 10;
               setXp(prevXp => prevXp + xpAward);
@@ -528,10 +510,8 @@ export const TaskProvider = ({ children }) => {
     }
   };
 
-  // Archive task
   const archiveTask = (taskId) => {
     try {
-      // Ensure taskId is an integer
       const parsedTaskId = parseInt(taskId, 10);
       
       if (isNaN(parsedTaskId)) {
@@ -539,7 +519,6 @@ export const TaskProvider = ({ children }) => {
         return;
       }
       
-      // Find the task to archive first without modifying state
       const taskToArchive = tasks.find(task => task.id === parsedTaskId);
       
       if (!taskToArchive) {
@@ -547,16 +526,13 @@ export const TaskProvider = ({ children }) => {
         return;
       }
       
-      // Add to archived tasks with timestamp
       const archivedTask = {
         ...taskToArchive,
         archivedAt: Date.now()
       };
       
-      // Update archived tasks
       setArchivedTasks(prev => [...prev, archivedTask]);
       
-      // Remove from active tasks
       setTasks(prevTasks => prevTasks.filter(task => task.id !== parsedTaskId));
       
       logActivity('Archived task', { 
@@ -570,10 +546,8 @@ export const TaskProvider = ({ children }) => {
     }
   };
 
-  // Restore task (fixed to prevent duplicates)
   const restoreTask = (taskId) => {
     try {
-      // Ensure taskId is an integer
       const parsedTaskId = parseInt(taskId, 10);
       
       if (isNaN(parsedTaskId)) {
@@ -581,7 +555,6 @@ export const TaskProvider = ({ children }) => {
         return;
       }
       
-      // Find the task to restore
       const taskToRestore = archivedTasks.find(task => task.id === parsedTaskId);
       
       if (!taskToRestore) {
@@ -589,13 +562,10 @@ export const TaskProvider = ({ children }) => {
         return;
       }
       
-      // Remove archivedAt property
       const { archivedAt, ...taskWithoutArchiveDate } = taskToRestore;
       
-      // Check for ID conflicts
       const hasIdConflict = tasks.some(t => t.id === taskWithoutArchiveDate.id);
       
-      // Prepare final task object
       let finalTask;
       
       if (hasIdConflict) {
@@ -603,7 +573,7 @@ export const TaskProvider = ({ children }) => {
         finalTask = { 
           ...taskWithoutArchiveDate, 
           id: newId,
-          sprintId: activeSprint // Move to current active sprint when restoring with new ID
+          sprintId: activeSprint 
         };
         
         logActivity('Restored task with new ID due to conflict', { 
@@ -614,7 +584,6 @@ export const TaskProvider = ({ children }) => {
       } else {
         finalTask = {
           ...taskWithoutArchiveDate,
-          // If the sprint no longer exists, move to active sprint
           sprintId: sprints.some(s => s.id === taskWithoutArchiveDate.sprintId) 
             ? taskWithoutArchiveDate.sprintId 
             : activeSprint
@@ -627,10 +596,8 @@ export const TaskProvider = ({ children }) => {
         });
       }
       
-      // Add to active tasks
       setTasks(prev => [...prev, finalTask]);
       
-      // Remove from archived tasks
       setArchivedTasks(prev => prev.filter(task => task.id !== parsedTaskId));
       
     } catch (error) {
@@ -638,7 +605,6 @@ export const TaskProvider = ({ children }) => {
     }
   };
 
-  // Filter tasks by column
   const getTasksByColumn = (columnId) => {
     try {
       if (!columnId) {
@@ -653,10 +619,8 @@ export const TaskProvider = ({ children }) => {
     }
   };
 
-  // Toggle task completion
   const toggleComplete = (id) => {
     try {
-      // Ensure id is an integer
       const parsedId = parseInt(id, 10);
       
       if (isNaN(parsedId)) {
@@ -668,7 +632,6 @@ export const TaskProvider = ({ children }) => {
         prevTasks.map(task => {
           if (task.id === parsedId) {
             const newCompleted = !task.completed;
-            // Award XP when completing a task
             if (newCompleted) {
               setXp(prevXp => prevXp + 10);
               logActivity('Task marked as complete, XP awarded', { id: parsedId });
@@ -695,7 +658,7 @@ export const TaskProvider = ({ children }) => {
     }
   };
 
-  // All context values (including sprint functions)
+  // All context values 
   const value = {
     tasks,
     archivedTasks,

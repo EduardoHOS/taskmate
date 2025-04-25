@@ -178,10 +178,10 @@
   }
   
   .submit-button {
-    background-color: #58cc02; /* Duolingo green */
+    background-color: #58cc02;
     color: white;
     border: none;
-    box-shadow: 0 4px 0 #46a302; /* Pressed effect */
+    box-shadow: 0 4px 0 #46a302; 
   }
   
   .submit-button:hover {
@@ -204,7 +204,7 @@
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s;
-    box-shadow: 0 4px 0 #46a302; /* Pressed effect */
+    box-shadow: 0 4px 0 #46a302; 
     margin-bottom: 1.5rem;
     display: inline-flex;
     align-items: center;
@@ -226,7 +226,6 @@
     box-shadow: 0 2px 0 #46a302;
   }
   
-  /* Priority selection with Duolingo style */
   .priority-selector {
     display: flex;
     gap: 0.5rem;
@@ -274,17 +273,16 @@
     font-weight: 600;
   }
   
-  /* Priority color coding */
   .priority-low .priority-icon {
-    color: #58cc02; /* Duolingo green */
+    color: #58cc02; /
   }
   
   .priority-medium .priority-icon {
-    color: #ffc800; /* Yellow */
+    color: #ffc800; 
   }
   
   .priority-high .priority-icon {
-    color: #ff4b4b; /* Red */
+    color: #ff4b4b; 
   }
   
   .priority-option input:checked + .priority-low {

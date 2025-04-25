@@ -1,6 +1,6 @@
 import { useTaskContext } from '../../context/TaskContext';
 import { useLanguage } from '../../context/LanguageContext';
-import './FilterControls.css'; 
+// import './FilterControls.css'; 
 export const FilterControls = () => {
   const { filter, setFilter } = useTaskContext();
   const { texts } = useLanguage();
